@@ -35,9 +35,6 @@ if(Input::exists()){
 			'address' => array(
 				'required' => true
 			),
-			'age' => array(
-				'required' => true
-			),
 			'nationality' => array(
 				'required' => true
 			),
@@ -52,7 +49,6 @@ if(Input::exists()){
 					'middle_name' =>  Input::get('middle_name'),
 					'last_name' =>  Input::get('last_name'),
 					'address' =>  Input::get('address'),
-					'age' =>  Input::get('age'),
 					'birthday' => Input::get('birthday'),
 					'gender' => Input::get('gender'),
 					'cellphone' =>  Input::get('cellphone'),
