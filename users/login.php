@@ -4,37 +4,38 @@ $user = new User();
 $login = true;
 $errors = array();
 $loginErrs = [];
-if($user->isLoggedin()){
+if($user->isLoggedin()):
 	Redirect::to('../views/index.php');
-}
-if(input::exists()){
-	if(Token::check(Input::get('token'))){
+endif;
+if(Input::exists()):
+	if(Token::check(Input::get('token'))):
 
 		$validate = new Validation();
 		$validation = $validate->check($_POST,array(
 			'username' => array('required' => true),
 			'password' => array('required' => true)
 			));
-		if($validation->passed()){
+		if($validation->passed()):
 			$remember = (Input::get('remember') === 'on') ? true : false;
 			$login = $user->login(Input::get('username'),Input::get('password'), $remember);
-
-			if($login){
+			if($login):
 				Session::flash('logged','You are logged in!');
 				Redirect::to('../views/index.php');
-			}else{
+			else:
 				$loginErrs[] = 'Logging in failed.';
 				$loginErrs[] = 'Wrong Username/Password or Your Account needs approval of the admin.';
-			}
-		}else{
+			endif;
+		else:
 				$errors = $validation->errors();
-		}
-	}
-}
+		endif;
+	endif;
+endif;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="../layouts/bootstrap/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="..layouts/bootstrap/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<?php require_once '../functions/header.php'; ?>
 </head>
 <body>
