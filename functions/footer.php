@@ -1,3 +1,4 @@
+	<script src="../layouts/js/main.js"></script>
 	<footer>
 		<div class="footer-content left">
 			<h1>contacts</h1>

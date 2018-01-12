@@ -32,7 +32,7 @@ require_once '../admin/fetch.php';
 		</li>
 		<?php if($user->isLoggedin()): ?>
 		<li>
-			<a href="../users/profile?user=<?= escape($user->data()->username); ?>" class="nav-link <?php echo $update === true || $changepass === true ? 'active' : '' ?>"><?= escape($store->setName($user->data()->username)); ?></a>
+			<a href="../users/profile?user=<?= escape($user->data()->username); ?>" class="nav-link <?php echo $update === true || $changepass === true ? 'active' : '' ?>"><?= escape($store->setName($user->data()->first_name)); ?></a>
 			<ul>
 				<li><a href="../users/update" class="sub-link <?php echo $update === true ? 'active-sublink' : '' ?>">Update details</a></li>
 				<li><a href="../users/changepassword" class="sub-link <?php echo $changepass === true ? 'active-sublink' : '' ?>">Change password</a></li>
