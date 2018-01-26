@@ -20,10 +20,12 @@ class DB{
 		}
 		return self::$_instance;
 	}
+	
 	public function query($sql,$params = array()){
+		// die($sql);
 		$this->_errors = false;
 		if($this->_query = $this->_pdo->prepare($sql)){
-			if($params !== null){
+			if(count($params) !== 0){
 				$x = 1;	
 				foreach ($params as $param) {
 					$this->_query->bindValue($x,$param);
@@ -41,24 +43,27 @@ class DB{
 		return $this;
 	}
 	public function action($action,$table,$where = array()){
+		$sql = "";
+		$sql .= "{$action} FROM {$table}";
 		if(count($where)  == 3){
 			$operators = array('=','>=','<=','<','>');
 			$field = $where[0];
 			$operator = $where[1];
 			$values = $where[2];
 			if(in_array($operator, $operators)){
-				$sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
-				 return $this->query($sql,array($values));
-				// if(!$this->query($sql,array($values))->errors()){
-				// 	return $this;
-				// }
-			}else if($where == null){
-				$sql = "{$action} FROM {$table}";
-				return $this->query($sql,null);
+				$sql .= " WHERE {$field} {$operator} ?";
+				if(!$this->query($sql,[$values])->errors()){
+					return $this;
+				}
+			}
+		}else{
+			if(!$this->query($sql,[])->errors()){
+				return $this;
 			}
 		}
 		return false;
 	}
+
 	public function insert($table,$fields = array()){
 			$keys = array_keys($fields);
 			$values = '';
@@ -81,7 +86,7 @@ class DB{
 		if($limit !== null){
 			$start = $limit[0];
 			$perPage = $limit[1];
-			$sql = "{$action} FROM {$table} ORDER BY id DESC LIMIT {$start},{$perPage}";
+			$sql = "{$action} FROM {$table} ";
 			return $this->query($sql,null);
 		}else{
 			$sql = "{$action} FROM {$table}";
@@ -113,10 +118,10 @@ class DB{
 		}
 	}
 	public function get($table,$where = array()){
-		if($where == null){
-			return $this->action('SELECT *',$table,null);
-		}else{
+		if(count($where)){
 			return $this->action('SELECT *',$table,$where);
+		}else{
+			return $this->action('SELECT *',$table);
 		}
 	}
 	public function update($table,$id,$fields = array()){

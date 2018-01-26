@@ -2,7 +2,7 @@
 require_once '../core/init.php';
 $user = new User();
 $login = true;
-$errors = array();
+$errors = [];
 $loginErrs = [];
 if($user->isLoggedin()):
 	Redirect::to('../views/index.php');

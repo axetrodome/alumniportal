@@ -212,7 +212,7 @@ foreach ($post->results() as $get) {
 			<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 			<div class="divider"></div>
 			<a href="../views/index.php" class="btn-cancel">Cancel</a>
-			<button type="submit" class="btn-submit">Add</button>
+			<button type="submit" class="btn-submit">Update</button>
 			<div class="divider"></div>
 		</form>
 	</div>
