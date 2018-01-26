@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2017 at 10:21 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Jan 26, 2018 at 12:57 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -84,6 +84,24 @@ INSERT INTO `comments` (`id`, `user_id`, `post_id`, `comment`, `is_approved`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `company`
+--
+
+CREATE TABLE `company` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `body` varchar(1000) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `skills_needed` varchar(255) NOT NULL,
+  `position` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `slot` varchar(11) NOT NULL,
+  `time_elapsed` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groups`
 --
 
@@ -130,8 +148,8 @@ INSERT INTO `posts` (`id`, `title`, `content`, `posted`, `type`, `status`, `imag
 (65, 'Some events ', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', '2017-09-29', 'events', '', '971830.jpg', 1506702942),
 (66, 'Another news ', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', '2017-09-29', 'news', ' ', '241390.jpg', 1506702964),
 (67, 'some images', '<p>testing imageLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p><img alt=\"\" src=\"https://static.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg\" style=\"height:500px; width:90%\" /></p>\r\n\r\n<p>testing imageLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', '2017-09-30', 'events', ' ', '183282.jpg', 1506786846),
-(68, 'testing', '<p>/** This file is part of KCFinder project<br />\r\n&nbsp; *<br />\r\n&nbsp; * &nbsp; &nbsp; &nbsp;@desc Base configuration file<br />\r\n&nbsp; * &nbsp; @package KCFinder<br />\r\n&nbsp; * &nbsp; @version 3.12<br />\r\n&nbsp; * &nbsp; &nbsp;@author Pavel Tzonkov<br />\r\n&nbsp; * @copyright 2010-2014 KCFinder Project<br />\r\n&nbsp; * &nbsp; @license http://opensource.org/licenses/GPL-3.0 GPLv3<br />\r\n&nbsp; * &nbsp; @license http://opensource.org/licenses/LGPL-3.0 LGPLv3<br />\r\n&nbsp; * &nbsp; &nbsp; &nbsp;@link http://kcfinder.sunhater.com<br />\r\n&nbsp; */</p>\r\n\r\n<p>/* IMPORTANT!!! Do not comment or remove uncommented settings in this file<br />\r\n&nbsp; &nbsp;even if you are using session configuration.</p>\r\n\r\n<p><img alt=\"\" src=\"/alumniportal/ckeditor/kcfinder/upload/images/22251398_283037902209158_1652610736_o.jpg\" style=\"height:1920px; width:1080px\" /></p>\r\n', '2017-10-07', 'news', 'rescheduled', '204409.jpg', 1507390810),
-(69, 'New title', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', '2017-10-17', 'news', 'rescheduled', '885918.jpg', 1508215853),
+(68, 'testing', '<p>/** This file is part of KCFinder project<br />\r\n&nbsp; *<br />\r\n&nbsp; * &nbsp; &nbsp; &nbsp;@desc Base configuration file<br />\r\n&nbsp; * &nbsp; @package KCFinder<br />\r\n&nbsp; * &nbsp; @version 3.12<br />\r\n&nbsp; * &nbsp; &nbsp;@author Pavel Tzonkov<br />\r\n&nbsp; * @copyright 2010-2014 KCFinder Project<br />\r\n&nbsp; * &nbsp; @license http://opensource.org/licenses/GPL-3.0 GPLv3<br />\r\n&nbsp; * &nbsp; @license http://opensource.org/licenses/LGPL-3.0 LGPLv3<br />\r\n&nbsp; * &nbsp; &nbsp; &nbsp;@link http://kcfinder.sunhater.com<br />\r\n&nbsp; */</p>\r\n\r\n<p>/* IMPORTANT!!! Do not comment or remove uncommented settings in this file<br />\r\n&nbsp; &nbsp;even if you are using session configuration.</p>\r\n\r\n<p><img alt=\"\" src=\"/alumniportal/ckeditor/kcfinder/upload/images/22251398_283037902209158_1652610736_o.jpg\" style=\"height:1920px; width:1080px\" /></p>\r\n', '2017-10-07', 'news', ' ', '204409.jpg', 1507390810),
+(69, 'New title', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br />\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br />\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br />\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br />\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br />\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', '2017-10-17', 'news', ' ', '885918.jpg', 1508215853),
 (70, '404', '<p>some of them</p>\r\n', '2017-10-20', 'events', 'cancelled', '835187.jpg', 1508512390);
 
 -- --------------------------------------------------------
@@ -209,10 +227,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `first_name`, `middle_name`, `last_name`, `address`, `birthday`, `gender`, `cellphone`, `telephone`, `nationality`, `course`, `company`, `position`, `year_graduated`, `password`, `salt`, `joined`, `groups`, `status`) VALUES
 (15, 'user', 'user@yahoo.com', 'yeeeee', 'yeeeee', 'yeeeee', 'yeeeee', '2017-10-21', 'yeeeee', '1231', '2312312312', 'yeeeee', 'BSIT', 'yeeeee', 'yeeeee', 0, 'ff56a52e7163fc446d9b09804d1c64fb69040023e51fdf2e991eb83960f24737', '\0°÷[Ö®B[ …?FÊÑÌ´…`­\',’°YzzÝï', '2017-09-13', 2, 1),
-(16, 'yeahoh212', 'valdepenachubcha@yahoo.com', 'Axel Mhar', 'M', 'Valdepena', 'lorem ipsum st blablablala', '1999-05-02', 'Male', '09123801938', '123123123', 'filipino', 'BSIT', 'No company', 'positionsss', 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', '9dhgDYÀ8ý½âþ¦¶ÇU$ì¾øšØ÷Ô w', '2017-10-01', 1, 1),
-(18, 'axe', 'axetroxxxxxx', 'axel mhar', 'none', 'valdepena', 'axeaxeaxeaxe', '2017-10-03', 'male', 'axe', '123123123', 'axe', 'BSIT', 'no company', 'axe', 0, 'c0c43c876b2b3f9f678cd5810477bd7cf43f58d79f440209583241b7d10d8891', '½íÝ£\'¤ãìStÂ5o])Áª«M\'Ë7°Úè½Xl', '2017-10-18', 2, 1),
+(16, 'yeahoh212', 'valdepenachubcha@yahoo.com', 'Axel Mhar', 'M', 'Valdepena', 'lorem ipsum st blablablala', '1999-05-02', 'male', '09123801938', '123123123', 'filipino', 'BSIT', 'No company', 'positionsss', 0, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', '9dhgDYÀ8ý½âþ¦¶ÇU$ì¾øšØ÷Ô w', '2017-10-01', 1, 1),
+(18, 'axe', 'axetroxxxxxx', 'axel mhar', 'qweqwe', 'valdepena', 'axeaxeaxeaxe', '2017-10-03', 'male', '123123123', '123123123', 'axe', 'BSIT', '123123123', 'axe', 0, 'c0c43c876b2b3f9f678cd5810477bd7cf43f58d79f440209583241b7d10d8891', '½íÝ£\'¤ãìStÂ5o])Áª«M\'Ë7°Úè½Xl', '2017-10-18', 2, 1),
 (19, 'axios', 'axios@yahoo.com', 'somename', 'middlename', 'bugs', 'address', '1999-05-05', 'male', '123123123', '1231231', 'filipino', 'BSIT', 'no company', 'wqeqwe', 2005, '8e1c31f87113b94be93f6fcaeb03175a6ad970c4d6700f13f3e349ec75bfb391', '/{çä±ŽÏ¾çjBî>æà5ŠT\"æp\\5q~2', '2017-10-20', 1, 1),
-(20, 'sample', 'qweqweqwe@yahoo.com', 'firstname', 'middle name', 'lastname', 'address', '1999-05-02', 'male', '123123', '123123', 'sine', 'BSIT', 'no company', 'position', 2009, 'a329a87f19f3a6a75bbbeb91a1d93ecb781bbc0e2632761478b6d036fb17e90c', 'A¾)À\\½¹GåWß±!ôS?¨{é´-”‰VYo¯à˜', '2017-10-20', 1, 1);
+(20, 'sample', 'qweqweqwe@yahoo.com', 'firstname', 'middle name', 'lastname', 'address', '1999-05-02', 'male', '123123', '123123', 'sine', 'BSIT', 'no company', 'position', 2009, 'a329a87f19f3a6a75bbbeb91a1d93ecb781bbc0e2632761478b6d036fb17e90c', 'A¾)À\\½¹GåWß±!ôS?¨{é´-”‰VYo¯à˜', '2017-10-20', 1, 1),
+(21, 'simpleuser', 'qweqweqweqw@yahoo.com', 'qweqweqweqw', 'qweqweqweqw', 'qweqweqweqw', 'qweqweqweqw', '2018-01-10', 'male', '12313131', '1231312312', 'qweqweqweqw', '', 'qweqweqweqw', 'qweqweqweqw', 2016, '3d1c1e6d610277a59d057c8630413947fcdd2be45303ca5bd369a7ac4eeb4c0d', 'uh†÷ša_«#·Äò’aŒž’ZhÐ==(ëSb', '2018-01-10', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -248,6 +267,12 @@ ALTER TABLE `answers`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -295,41 +320,49 @@ ALTER TABLE `users_session`
 --
 ALTER TABLE `answers`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `users_session`
 --
 ALTER TABLE `users_session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
