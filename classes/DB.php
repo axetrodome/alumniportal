@@ -76,6 +76,7 @@ class DB{
 				$x++; 
 			}
 			$sql = "INSERT INTO {$table} (`".implode('`,`',$keys)."`) VALUES ({$values})";
+			// die($sql);
 			if(!$this->query($sql,$fields)->errors()){
 				return true;
 			}

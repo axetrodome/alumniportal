@@ -5,6 +5,7 @@ class DBManager
     private $table;
     private $whereClause;
     private $limit;
+    private $start;
 
     public function select() {
         $this->selectables = func_get_args();
@@ -21,8 +22,9 @@ class DBManager
         return $this;
     }
 
-    public function limit($limit) {
+    public function limit($limit,$start = null) {
         $this->limit = $limit;
+        $this->start = $start;
         return $this;
     }
 
@@ -45,11 +47,17 @@ class DBManager
             $query[] = $this->whereClause;
         }
 
-        if (!empty($this->limit)) {
+         if(!empty($this->limit)){
             $query[] = "LIMIT";
-            $query[] = $this->limit;
-        }
+            if(!empty($this->start)){
+                $limit[] = $this->start;
+                $limit[] = $this->limit;
+                $query[] = join(',',$limit);
+            }else{
 
+                $query[] = $this->limit;
+            }
+         }  
         return join(' ', $query);
     }
 }
@@ -64,7 +72,7 @@ echo $testOne->select()->from('users')->result(),'<br>';
 // both displays: 'SELECT * FROM users'
 
 $testTwo = new DBManager();
-$testTwo->select()->from('posts')->where('id > 200')->limit(10);
+$testTwo->select()->from('posts')->where('id > 200')->limit(10,15);
 echo $testTwo->result(),'<br>';
 // this displays: 'SELECT * FROM posts WHERE id > 200 LIMIT 10'
 
@@ -74,7 +82,7 @@ $testThree->select(
     'email',
     'country',
     'city'
-)->from('users')->where('id = 2399');
+)->from('users')->where('id = 2399');   
 echo $testThree->result(),'<br>' ;
 // this will display:
 // 'SELECT firstname, email, country, city FROM users WHERE id = 2399'

@@ -42,13 +42,15 @@ require_once '../admin/fetch.php';
 		<?php endif; ?>
 		<?php if(!$user->isLoggedin()): ?>
 			<li>
-				<a href="#" class="nav-link <?php echo $login === true || $register === true ? 'active' : '' ?>">Login/Register</a>
+				<a href="#" class="nav-link <?php echo $login === true || $register === true ? 'active' : '' ?>">Alumni</a>
 				<ul>
 					<li><a href="../users/login" class="sub-link <?php echo $login === true ? 'active-sublink' : '' ?>">Login</a></li>
 					<li><a href="../users/register" class="sub-link <?php echo $register === true ? 'active-sublink' : '' ?>">Register</a></li>
 				</ul>
 			</li>
+		<li><a href="../jobs/partner.php" class="nav-link <?php echo $partner === true ? 'active' : '' ?>">Partner</a></li>
 		<?php endif; ?>
+		<li><a href="../jobs/jobs.php" class="nav-link <?php echo $jobs === true ? 'active' : '' ?>">jobs</a></li>
 		<li><a href="../forums/section" class="nav-link <?php echo $forumpage === true ? 'active' : '' ?>">forum</a></li>
 		<li>
 			<form action="../posts/search" method="POST">

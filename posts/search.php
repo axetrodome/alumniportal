@@ -12,12 +12,8 @@ $db = DB::getInstance();
 <html>
 <head>
 	<title>Alumni Portal</title>
-	<!-- css here -->
 	<?php require_once '../functions/header.php';  ?>
 </head>
-<style type="text/css">
-	
-</style>
 <body>
 	<nav class="nav">
 		<ul>
@@ -100,7 +96,7 @@ $db = DB::getInstance();
 						<img src="../images/<?= $getpost->image ?>">
 						<div class="post-content">
 							<span class="type"><?= $getpost->type; ?></span>
-							<h2><a href="../posts/read.php?post=<?= escape($getpost->id); ?>"><?= $getpost->title ?></a></h2>
+							<h2><a href="../posts/	read.php?post=<?= escape($getpost->id); ?>"><?= $getpost->title ?></a></h2>
 							<?php if(strlen($content) > 300): ?>
 							<?= $store->shortContent($content) ?><a href="../posts/read.php?post=<?= escape($getpost->id) ?>"> Read more..</a>
 							<?php else: ?>
