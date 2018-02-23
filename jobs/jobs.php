@@ -1,7 +1,7 @@
 <?php
 require_once '../core/init.php';
 $jobs = true;
-
+$partner = new Partner();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,8 +10,6 @@ $jobs = true;
 </head>
 <body>
 	<?php require_once '../functions/navigationbar.php'; ?>
-	<div>
-		
-	</div>
+	<?= $partner->data()->email; ?>
 </body>
 </html>

@@ -11,6 +11,7 @@ $GLOBALS['config'] = array(
 		),
 	'session' => array(
 		'session_name' => 'user',
+		'partner_session' => 'partner',
 		'token_name' => 'token'
 		),
 	'remember' => array(   
@@ -28,6 +29,13 @@ if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Confi
 	$hashCheck = DB::getInstance()->get('users_session',array('hash','=',$hash));
 	if($hashCheck->count()){
 		$user = new User($hashCheck->first()->user_id);
+		$user->login();
+	}
+}else if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/partner_session'))){
+	$hash = Cookie::get(Config::get('remember/cookie_name'));
+	$hashCheck = DB::getInstance()->get('users_session',array('hash','=',$hash));
+	if($hashCheck->count()){
+		$user = new Partner($hashCheck->first()->user_id);
 		$user->login();
 	}
 }

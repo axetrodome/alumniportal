@@ -1,5 +1,7 @@
 <?php 
 $user = new User();
+$partner = new Partner();
+$store = new Store();
 $db = DB::getInstance();
 require_once '../admin/fetch.php';
 ?>
@@ -40,6 +42,16 @@ require_once '../admin/fetch.php';
 			</ul>
 		</li>
 		<?php endif; ?>
+		<?php if($partner->isLoggedin()): ?>
+		<li>
+			<a href="../jobs/profile?partner=<?= escape($partner->data()->company_name); ?>" class="nav-link <?php echo $update === true || $changepass === true ? 'active' : '' ?>"><?= escape($store->setName($partner->data()->company_name)); ?></a>
+			<ul>
+				<li><a href="../users/update" class="sub-link <?php echo $update === true ? 'active-sublink' : '' ?>">Update details</a></li>
+				<li><a href="../users/changepassword" class="sub-link <?php echo $changepass === true ? 'active-sublink' : '' ?>">Change password</a></li>
+				<li><a href="../users/logout" class="sub-link">Log out</a></li>
+			</ul>
+		</li>
+		<?php endif; ?>
 		<?php if(!$user->isLoggedin()): ?>
 			<li>
 				<a href="#" class="nav-link <?php echo $login === true || $register === true ? 'active' : '' ?>">Alumni</a>
@@ -48,7 +60,13 @@ require_once '../admin/fetch.php';
 					<li><a href="../users/register" class="sub-link <?php echo $register === true ? 'active-sublink' : '' ?>">Register</a></li>
 				</ul>
 			</li>
-		<li><a href="../jobs/partner.php" class="nav-link <?php echo $partner === true ? 'active' : '' ?>">Partner</a></li>
+		<li>
+			<a href="../jobs/partner.php" class="nav-link <?php echo $partner === true || $partners_login === true ? 'active' : '' ?>">Partner</a>
+			<ul>
+				<li><a href="../jobs/partner.php" class="sub-link <?php echo $partner === true ? 'active-sublink' : '' ?>">Register</a></li>
+				<li><a href="../jobs/partners_login.php" class="sub-link <?php echo $partners_login === true ? 'active-sublink' : '' ?>">Login</a></li>
+			</ul>
+		</li>
 		<?php endif; ?>
 		<li><a href="../jobs/jobs.php" class="nav-link <?php echo $jobs === true ? 'active' : '' ?>">jobs</a></li>
 		<li><a href="../forums/section" class="nav-link <?php echo $forumpage === true ? 'active' : '' ?>">forum</a></li>

@@ -28,6 +28,6 @@
 		</div>
 		<div class="clearfix"></div>
 		<div class="copyrights">
-			<p>© 2017 CSCQC Alumni Association. Responsive Website by: Group 2.</p>
+			<p>© <?= date('Y'); ?> CSCQC Alumni Association. Responsive Website by: BSIT 3rd Year.</p>
 		</div>
 	</footer>

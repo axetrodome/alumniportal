@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2018 at 12:57 PM
+-- Generation Time: Feb 23, 2018 at 04:46 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -84,24 +84,6 @@ INSERT INTO `comments` (`id`, `user_id`, `post_id`, `comment`, `is_approved`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
---
-
-CREATE TABLE `company` (
-  `id` int(11) NOT NULL,
-  `company_name` varchar(100) NOT NULL,
-  `body` varchar(1000) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `skills_needed` varchar(255) NOT NULL,
-  `position` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `slot` varchar(11) NOT NULL,
-  `time_elapsed` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `groups`
 --
 
@@ -118,6 +100,54 @@ CREATE TABLE `groups` (
 INSERT INTO `groups` (`id`, `name`, `permission`) VALUES
 (1, 'Standard user', ''),
 (2, 'Administrator', '{\"admin\":1,\"moderator\":1}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `partners`
+--
+
+CREATE TABLE `partners` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(100) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `number_year_operation` int(11) NOT NULL,
+  `alumni_need` int(11) NOT NULL,
+  `type_of_company` varchar(50) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `industry` varchar(100) NOT NULL,
+  `telephone` varchar(50) NOT NULL,
+  `website` varchar(100) NOT NULL,
+  `contact_person` varchar(100) NOT NULL,
+  `job_title` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(111) NOT NULL,
+  `salt` varchar(111) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `partners`
+--
+
+INSERT INTO `partners` (`id`, `company_name`, `type`, `number_year_operation`, `alumni_need`, `type_of_company`, `address`, `industry`, `telephone`, `website`, `contact_person`, `job_title`, `email`, `password`, `salt`, `created_at`) VALUES
+(1, 'ggez', 'private', 2, 2, 'local', 'ggez', 'ggez', '123113', 'ggez', 'ggez', 'ggez', 'ggez@yahoo.com', 'f2a22d66957a55bc13c27ba8ffb72e51b7e8ef7366275610d75208ab37398047', 'vKmècÖØg{dBV•þ‘…)h@‡(<zn/À\\év', '2018-02-01 08:32:49'),
+(2, 'qweqweq', 'private', 2, 0, 'local', 'qweqweqqweqweqqweqweqqweqweq', 'qweqweq', '12312312', 'qweqweq', 'qweqweq', 'qweqweq', 'axetrodome@yahoo.com', '859887d2c75a4b5c07368b67424113c3337d66cb2b5f5acc92155b25790472e1', '¼L™‰ˆè>	¿Aßƒ±Ë )èÑaQCù£É±¡ðûäÊ', '2018-02-23 08:46:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `partners_post`
+--
+
+CREATE TABLE `partners_post` (
+  `id` int(11) NOT NULL,
+  `partner_id` int(11) NOT NULL,
+  `position` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `details` varchar(1000) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -270,15 +300,21 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `groups`
 --
 ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `partners`
+--
+ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `partners_post`
+--
+ALTER TABLE `partners_post`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -332,6 +368,18 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `partners_post`
+--
+ALTER TABLE `partners_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
